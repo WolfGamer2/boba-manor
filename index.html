@@ -6,7 +6,7 @@
     <title>The Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <style>
-        /* all styles */
+        /* Global Styles */
         body {
             background-color: #000;
             color: #fff;
@@ -25,14 +25,20 @@
         header {
             text-align: center;
             padding: 20px;
-        
+            /* Transparent background to show spooky background */
             background-color: rgba(0, 0, 0, 0.3);
         }
 
         h1 {
-            color: #fff;
+            color: #f8e71c; /* Yellow color */
             font-size: 4rem;
-            text-shadow: 2px 2px 10px #fff;
+            text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; /* White and yellow shadow for outline effect */
+            animation: flicker 1.5s infinite alternate; /* Flickering effect */
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
         }
 
         p {
@@ -47,8 +53,8 @@
         }
 
         h2 {
-            color: #f8e71c; 
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+            color: #f8e71c; /* Easier to read color */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for legibility */
             font-size: 2rem;
         }
 
@@ -70,7 +76,7 @@
             transform: scale(1.1);
         }
 
-        /* Floating Boba Bubbles - trying to get it to workk, just a idea from a friend */
+        /* Floating Boba Bubbles */
         .bubble {
             width: 50px;
             height: 50px;
@@ -93,7 +99,7 @@
             }
         }
 
-        
+        /* Hidden Ghost */
         .hidden-ghost {
             position: absolute;
             width: 80px;
@@ -110,7 +116,7 @@
             transform: scale(1.2);
         }
 
-        /* rules */
+        /* Rules Box */
         .rules-box {
             max-width: 600px;
             margin: 20px auto;
@@ -175,11 +181,11 @@
         }
 
         ghost.addEventListener('click', () => {
-            ghost.style.opacity = 0; 
+            ghost.style.opacity = 0; // Ghost disappears
             setTimeout(() => {
-                moveGhost(); 
-                ghost.style.opacity = 0.8; 
-            }, 500); 
+                moveGhost(); // Move ghost after it disappears
+                ghost.style.opacity = 0.8; // Make it reappear
+            }, 500); // 500ms delay before reappearing
         });
 
         // Floating boba bubbles
@@ -192,7 +198,7 @@
         }
     </script>
 
-    <!-- Hidden Ghost -->
+    <!-- Hidden Clickable Ghost -->
     <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
 </body>
 </html>
