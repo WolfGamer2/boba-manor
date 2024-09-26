@@ -25,15 +25,14 @@
         header {
             text-align: center;
             padding: 20px;
-            /* Set background color to transparent */
-            background-color: rgba(0, 0, 0, 0.6); /* Slightly transparent for visibility */
+            /* Transparent background to show spooky background */
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
         h1 {
             color: #fff;
             font-size: 4rem;
             text-shadow: 2px 2px 10px #fff;
-            animation: flicker 3s infinite;
         }
 
         p {
@@ -103,23 +102,14 @@
             height: 80px;
             background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
             background-size: cover;
-            opacity: 0.5;
+            opacity: 0.8;
             cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .hidden-ghost:hover {
             opacity: 1;
             transform: scale(1.2);
-        }
-
-        /* Flicker Animation for H1 */
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0;
-            }
         }
 
         /* Rules Box */
@@ -145,14 +135,14 @@
 <body>
     <header>
         <h1>The Boba Manor</h1>
-        <p>Welcome to the rules and instructions for The Boba Manor Hackathon!</p>
+        <p>Submit a spooky website for the Boba Manor!</p>
     </header>
 
     <main>
         <!-- Submission Button Linked to Airtable -->
         <section class="submission-section">
             <h2>Submit Your Haunted Room</h2>
-            <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit via Airtable</button>
+            <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit here</button>
         </section>
 
         <!-- Rules Box -->
@@ -161,7 +151,7 @@
             <ol>
                 <li>All submissions must be spooky-themed!</li>
                 <li>No inappropriate content—keep it eerie, but respectful.</li>
-                <li>Collaborations are welcome—bring your team of ghosts!</li>
+                <li>Must be a high schooler or younger!</li>
                 <li>The deadline for submissions is midnight on October 31st!</li>
                 <li>Don’t feed the Boba ghosts!</li>
             </ol>
@@ -175,9 +165,18 @@
     <!-- Spooky sounds.... -->
     <audio id="creak-sound" src="door-creak.mp3"></audio>
     <script>
-        // clickable ghost
-        document.querySelector('.hidden-ghost').addEventListener('click', () => {
-            alert('You found the hidden ghost! Beware of Boba spirits...');
+        // clickable ghost - ghost moves to random location on click
+        const ghost = document.querySelector('.hidden-ghost');
+
+        function moveGhost() {
+            const randomX = Math.random() * (window.innerWidth - 80); // 80 is the ghost's width
+            const randomY = Math.random() * (window.innerHeight - 80); // 80 is the ghost's height
+            ghost.style.left = `${randomX}px`;
+            ghost.style.top = `${randomY}px`;
+        }
+
+        ghost.addEventListener('click', () => {
+            moveGhost();
         });
 
         // floating boba bubbles for everyone :)
@@ -191,6 +190,6 @@
     </script>
 
     <!-- Hidden Clickable Ghost -->
-    <div class="hidden-ghost"></div>
+    <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
 </body>
 </html>
