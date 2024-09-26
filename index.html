@@ -6,17 +6,16 @@
     <title>The Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
+        /* All Styles */
         body {
-            display: flex; /* Use flexbox to manage layout */
+            display: flex; 
             flex-direction: column; /* Arrange children in a column */
-            min-height: 100vh; /* Full height of the viewport */
+            min-height: 100vh; 
             background-color: #000;
             color: #fff;
             font-family: 'Creepster', cursive;
             margin: 0;
             padding: 0;
-            /* Background covers the entire page even when scrolling */
             background-image: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid');
             background-size: cover;
             background-attachment: fixed;
@@ -24,19 +23,18 @@
             background-position: center;
         }
 
-        /* Header Styles */
+        /* Header style */
         header {
             text-align: center;
             padding: 20px;
-            /* Transparent background to show spooky background */
             background-color: rgba(0, 0, 0, 0.3);
         }
 
         h1 {
-            color: #f8e71c; /* Yellow color */
+            color: #f8e71c; 
             font-size: 4rem;
-            text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; /* White and yellow shadow for outline effect */
-            animation: flicker 1.5s infinite alternate; /* Flickering effect */
+            text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; 
+            animation: flicker 1.5s infinite alternate; 
         }
 
         @keyframes flicker {
@@ -49,25 +47,25 @@
             color: #ddd;
         }
 
-        /* Main content flex-grow to push footer down */
+       
         main {
-            flex: 1; /* Make the main section grow to fill the available space */
+            flex: 1; 
             padding: 20px;
         }
 
-        /* Section Styles */
+        /* Section style */
         .submission-section {
             padding: 20px;
             text-align: center;
         }
 
         h2 {
-            color: #f8e71c; /* Easier to read color */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for legibility */
+            color: #f8e71c; 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
             font-size: 2rem;
         }
 
-        /* Button Styles */
+        
         button {
             padding: 10px 20px;
             background-color: #333;
@@ -180,10 +178,10 @@
 
     <!-- JavaScript -->
     <script>
-        // Register the ghost element
+        // Register the ghost 
         const ghost = document.querySelector('.hidden-ghost');
 
-        // Function to move the ghost to a random location
+       
         function moveGhost() {
             const randomX = Math.random() * (window.innerWidth - 80); // 80 is the ghost's width
             const randomY = Math.random() * (window.innerHeight - 80); // 80 is the ghost's height
@@ -191,16 +189,16 @@
             ghost.style.top = `${randomY}px`;
         }
 
-        // Ghost click event to move it
-        ghost.onclick = function() {
-            ghost.style.opacity = 0; // Make ghost disappear
-            setTimeout(() => {
-                moveGhost(); // Move ghost after disappearing
-                ghost.style.opacity = 0.8; // Make it reappear
-            }, 500); // Delay before reappearing
-        };
+        
+       ghost.onclick = function() {
+  ghost.style.opacity = 0; // Make ghost disappear immediately
+  setTimeout(() => {
+    moveGhost(); // Move ghost after a delay
+    ghost.style.opacity = 0.8; // Make it reappear
+  }, 2000); // Increase the delay to 2 seconds
+};
 
-        // Floating boba bubbles for everyone :)
+    
         for (let i = 0; i < 10; i++) {
             let bubble = document.createElement('div');
             bubble.classList.add('bubble');
