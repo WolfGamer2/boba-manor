@@ -1,4 +1,3 @@
-/* style.css */
 body {
     margin: 0;
     padding: 0;
@@ -148,4 +147,28 @@ area:hover {
     border: 2px solid #fff;
     box-shadow: 0 0 15px #fff;
     text-align: left;
+}
+
+/* Sticker Styles */
+.stickers {
+    position: absolute;
+    top: 20px; /* Adjust this value to move stickers up or down */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between; /* Spread stickers across the width */
+    z-index: 10; /* Ensure stickers are above other content */
+}
+
+.sticker {
+    width: 60px; /* Set width for stickers; adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.left {
+    margin-left: 20px; /* Spacing from the left edge */
+}
+
+.right {
+    margin-right: 20px; /* Spacing from the right edge */
 }
