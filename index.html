@@ -5,44 +5,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* more Styles */
+        body {
+            background-color: #0b0c10;
+            color: #f8e71c;
+            font-family: 'Creepster', cursive;
+            background: url('distressed-texture.png'), url('spooky-manor-background.jpg');
+            background-size: cover;
+            background-blend-mode: multiply;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* header styles */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            color: #ff0054;
+            font-size: 4rem;
+            text-shadow: 2px 2px 10px #ff0054;
+            animation: flicker 3s infinite;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #00ff9f;
+        }
+
+        /* all styles */
+        .submission-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #f8e71c;
+            animation: glitch 1s infinite;
+            font-size: 2rem;
+        }
+
+        /* form and buttons */
+        button {
+            padding: 10px 20px;
+            background-color: darkred;
+            color: #fff;
+            font-family: 'Creepster', cursive;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #ff0054;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+            transform: scale(1.1);
+        }
+
+        /* boba bubbles */
+        .bubble {
+            width: 50px;
+            height: 50px;
+            background-color: #ff0054;
+            border-radius: 50%;
+            position: absolute;
+            animation: float 10s infinite;
+            box-shadow: 0 0 15px rgba(255, 0, 84, 0.7);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-300px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /*Ghost */
+        .hidden-ghost {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            width: 80px;
+            height: 80px;
+            background: url('ghost.png') no-repeat center;
+            background-size: cover;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .hidden-ghost:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        /* Flicker and Glitch stuff */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+            25% {
+                text-shadow: -2px 0 red, 2px 0 blue;
+            }
+            50% {
+                text-shadow: 2px 0 red, -2px 0 blue;
+            }
+            75% {
+                text-shadow: -2px 0 red, 2px 0 blue;
+            }
+        }
+
+        /* Rules Box */
+        .rules-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffeb3b;
+            border: 2px solid #ff0054;
+            box-shadow: 0 0 15px #ff0054;
+            text-align: left;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00ff9f;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>The Boba Manor</h1>
-        <p>Enter the haunted manor... if you dare!</p>
+        <p> The Boba Manor!</p>
     </header>
-    
-    <main>
-        <!-- Spooky Manor Image with Clickable Rooms -->
-        <section class="manor-section">
-            <h2>Explore the Haunted Rooms</h2>
-            <img src="cartoon-manor.png" alt="Spooky Manor" usemap="#manormap">
-            <map name="manormap" id="manormap"></map>
-        </section>
 
-        <!-- Website Submission Form -->
+    <main>
+        <!-- Submission Button Linked to Airtable -->
         <section class="submission-section">
             <h2>Submit Your Haunted Room</h2>
-            <form id="submission-form">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
+            <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit your Website</button>
+        </section>
 
-                <label for="website">Website URL:</label>
-                <input type="url" id="website" name="website" required>
-
-                <button type="submit">Submit Your Haunted Room</button>
-            </form>
+        <!-- Rules -->
+        <section class="rules-box">
+            <h2>Rules of the Haunted Manor</h2>
+            <ol>
+                <li>All submissions must be spooky-themed!</li>
+                <li>No inappropriate content—keep it eerie, but respectful.</li>
+                <li>Collaborations are welcome—bring your team of ghosts!</li>
+                <li>The deadline for submissions is midnight on October 31st!</li>
+                <li>Don’t feed the Boba ghosts!</li>
+            </ol>
         </section>
     </main>
 
     <footer>
-        <p>&copy; Boba Manor. Beware, you have been warned...</p>
+        <p>&copy; The Boba Manor. Beware, you have been warned...</p>
     </footer>
 
-    <!-- Spooky Sound Effect -->
+    <!-- Spooky sounds.... need to add music -->
     <audio id="creak-sound" src="door-creak.mp3"></audio>
+    <script>
+        // clickable ghost
+        document.querySelector('.hidden-ghost').addEventListener('click', () => {
+            alert('You found the hidden ghost! Beware of Boba spirits...');
+        });
 
-    <script src="script.js"></script>
+        // floating boba bubbles for everyone :)
+        for (let i = 0; i < 10; i++) {
+            let bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(bubble);
+        }
+    </script>
+
+    <!-- ghost -->
+    <div class="hidden-ghost"></div>
 </body>
 </html>
