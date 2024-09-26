@@ -179,7 +179,7 @@
 
     <!-- JavaScript -->
     <script>
-        const ghost = document.querySelector('.hidden-ghost');
+        const ghost = document.getElementById('.hidden-ghost');
 
         function moveGhost() {
             const randomX = Math.random() * (window.innerWidth - 80); // 80 is the ghost's width
@@ -188,7 +188,7 @@
             ghost.style.top = `${randomY}px`;
         }
 
-        ghost.addEventListener('onClick', () => {
+        ghost.addEventListener('click', () => {
             ghost.style.opacity = 0; 
             setTimeout(() => {
                 moveGhost(); 
