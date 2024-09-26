@@ -14,6 +14,7 @@ body {
 header {
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
+    position: relative; /* Set position relative to position stickers */
 }
 
 h1 {
@@ -152,17 +153,17 @@ area:hover {
 /* Sticker Styles */
 .stickers {
     position: absolute;
-    top: 20px; /* stickers up or down */
+    top: 10px; /* Adjust this value to move stickers up or down */
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between; /* width */
-    z-index: 10; /* above the content */
+    justify-content: space-between; /* Spread stickers across the width */
+    z-index: 10; /* Ensure stickers are above other content */
 }
 
 .sticker {
-    width: 60px; /* widht */
-    height: auto; /* aspect ratio */
+    width: 40px; /* Set a smaller width for stickers */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .left {
