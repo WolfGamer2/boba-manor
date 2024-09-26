@@ -189,13 +189,13 @@
             ghost.style.top = `${randomY}px`;
         }
 
-        
+       // Not working 
        ghost.onclick = function() {
-  ghost.style.opacity = 0; // Make ghost disappear immediately
+  ghost.style.opacity = 0; 
   setTimeout(() => {
-    moveGhost(); // Move ghost after a delay
-    ghost.style.opacity = 0.8; // Make it reappear
-  }, 2000); // Increase the delay to 2 seconds
+    moveGhost(); 
+    ghost.style.opacity = 0.8; 
+  }, 2000); 
 };
 
     
@@ -209,6 +209,6 @@
     </script>
 
     <!-- Hidden Clickable Ghost -->
-    <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
+    <div class="hidden-ghost" style="left: 40%; top: 30%;"></div>
 </body>
 </html>
