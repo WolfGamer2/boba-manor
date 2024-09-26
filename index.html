@@ -24,6 +24,7 @@
         header {
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.3);
+            position: relative; 
         }
 
         h1 {
@@ -120,19 +121,42 @@
             background-color: rgba(0, 0, 0, 0.9);
             color: #fff;
         }
+
+        /* Sticker Styles */
+        .stickers {
+            position: absolute;
+            top: 10px; /* stickers up or down */
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between; /* Spread stickers across the width */
+            z-index: 10; /* Ensure stickers are above other content */
+        }
+
+        .sticker {
+            width: 40px; /* Set a smaller width for stickers */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .left {
+            margin-left: 20px; /* Spacing from the left edge */
+        }
+
+        .right {
+            margin-right: 20px; /* Spacing from the right edge */
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>The Boba Manor</h1>
         <p>Submit a spooky website for the Boba Manor!</p>
+        <!-- Stickers -->
+        <div class="stickers">
+            <img src="https://hackclub.com/stickers/orpheus-having-boba.png" class="sticker left" alt="Orpheus Having Boba">
+            <img src="https://hackclub.com/stickers/skullpup_boba.png" class="sticker right" alt="Skullpup Boba">
+        </div>
     </header>
-
-<!-- Stickers -->
-    <div class="stickers">
-        <img src="https://hackclub.com/stickers/orpheus-having-boba.png" class="sticker left" alt="Orpheus Having Boba">
-        <img src="https://hackclub.com/stickers/skullpup_boba.png" class="sticker right" alt="Skullpup Boba">
-    </div>
 
     <main>
         <!-- Submission Button Linked to Airtable -->
