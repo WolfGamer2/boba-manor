@@ -1,11 +1,11 @@
-// JavaScript for handling form submission and updating the manor map
+
 const rooms = [
     { coords: "50,50,150,150", website: "https://default-room1.com" },
     { coords: "160,50,260,150", website: "https://default-room2.com" },
-    // Add more default rooms here
+   //add more rooms here r
 ];
 
-// Function to update the image map
+
 function updateManor() {
     let manorMap = '';
     rooms.forEach(room => {
@@ -14,16 +14,16 @@ function updateManor() {
     document.getElementById('manormap').innerHTML = manorMap;
 }
 
-// Call updateManor() on page load
+
 updateManor();
 
-// Handle form submission
+// form submissionss
 document.getElementById("submission-form").addEventListener("submit", function(event) {
     event.preventDefault();
     const name = document.getElementById("name").value;
     const website = document.getElementById("website").value;
 
-    // Add the submitted website to the next available room
+    //add wbsite to manor
     for (let i = 0; i < rooms.length; i++) {
         if (rooms[i].website.includes("default")) {
             rooms[i].website = website;
@@ -31,13 +31,13 @@ document.getElementById("submission-form").addEventListener("submit", function(e
         }
     }
 
-    // Update the manor map with new submissions
+    // update wit new submissions
     updateManor();
 
     alert(`${name}, your room has been added to the spooky manor!`);
 });
 
-// Play sound effect on room click
+// souund effect?
 document.querySelectorAll("area").forEach(room => {
     room.addEventListener("click", () => {
         document.getElementById("creak-sound").play();
