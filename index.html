@@ -6,16 +6,17 @@
     <title>The Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <style>
-        /* All Styles */
+        /* Global Styles */
         body {
-            display: flex; 
-            flex-direction: column;
-            min-height: 100vh; 
+            display: flex; /* Use flexbox to manage layout */
+            flex-direction: column; /* Arrange children in a column */
+            min-height: 100vh; /* Full height of the viewport */
             background-color: #000;
             color: #fff;
             font-family: 'Creepster', cursive;
             margin: 0;
             padding: 0;
+            /* Background covers the entire page even when scrolling */
             background-image: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid');
             background-size: cover;
             background-attachment: fixed;
@@ -23,19 +24,19 @@
             background-position: center;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
             text-align: center;
             padding: 20px;
-           
+            /* Transparent background to show spooky background */
             background-color: rgba(0, 0, 0, 0.3);
         }
 
         h1 {
-            color: #f8e71c; 
+            color: #f8e71c; /* Yellow color */
             font-size: 4rem;
-            text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; 
-            animation: flicker 1.5s infinite alternate; 
+            text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; /* White and yellow shadow for outline effect */
+            animation: flicker 1.5s infinite alternate; /* Flickering effect */
         }
 
         @keyframes flicker {
@@ -48,21 +49,21 @@
             color: #ddd;
         }
 
-        /* footer pusher */
+        /* Main content flex-grow to push footer down */
         main {
-            flex: 1; 
+            flex: 1; /* Make the main section grow to fill the available space */
             padding: 20px;
         }
 
-        /* Section styles */
+        /* Section Styles */
         .submission-section {
             padding: 20px;
             text-align: center;
         }
 
         h2 {
-            color: #f8e71c;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
+            color: #f8e71c; /* Easier to read color */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for legibility */
             font-size: 2rem;
         }
 
@@ -151,7 +152,7 @@
     </header>
 
     <main>
-        <!-- Submission Button Linked to the Airtable -->
+        <!-- Submission Button Linked to Airtable -->
         <section class="submission-section">
             <h2>Submit Your Haunted Room</h2>
             <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit here</button>
@@ -179,8 +180,10 @@
 
     <!-- JavaScript -->
     <script>
-        const ghost = document.getElementById('.hidden-ghost');
+        // Register the ghost element
+        const ghost = document.querySelector('.hidden-ghost');
 
+        // Function to move the ghost to a random location
         function moveGhost() {
             const randomX = Math.random() * (window.innerWidth - 80); // 80 is the ghost's width
             const randomY = Math.random() * (window.innerHeight - 80); // 80 is the ghost's height
@@ -188,15 +191,16 @@
             ghost.style.top = `${randomY}px`;
         }
 
+        // Use addEventListener to register click event
         ghost.addEventListener('click', () => {
-            ghost.style.opacity = 0; 
+            ghost.style.opacity = 0; // Make ghost disappear
             setTimeout(() => {
-                moveGhost(); 
-                ghost.style.opacity = 0.8; //reapper code
-            }, 500); //delay
+                moveGhost(); // Move ghost after disappearing
+                ghost.style.opacity = 0.8; // Make it reappear
+            }, 500); // Delay before reappearing
         });
 
-        // Floating boba bubbles
+        // Floating boba bubbles for everyone :)
         for (let i = 0; i < 10; i++) {
             let bubble = document.createElement('div');
             bubble.classList.add('bubble');
@@ -206,7 +210,7 @@
         }
     </script>
 
-    <!-- Hidden Clickable Ghost - NOT WORKIN -->
+    <!-- Hidden Clickable Ghost -->
     <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
 </body>
 </html>
