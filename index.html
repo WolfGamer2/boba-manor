@@ -3,123 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Spooky Boba Manor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        body {
-            background-color: #0a0a0a;
-            color: #f8e71c;
-            font-family: 'Press Start 2P', cursive;
-            background: url('distressed-texture.png'), url('spooky-manor-background.jpg');
-            background-size: cover;
-            background-blend-mode: multiply;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        /* Title and Text Styles */
-        h1 {
-            font-family: 'Creepster', cursive;
-            color: #ff0054;
-            text-shadow: 2px 2px 10px #ff0054;
-            animation: flicker 3s infinite;
-        }
-
-        p {
-            font-family: 'Press Start 2P', cursive;
-            color: #00ff9f;
-        }
-
-        /* Image Map Style */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Flicker Animation */
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0;
-            }
-        }
-
-        /* Glitch Animation */
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 0 red, -2px 0 blue;
-            }
-            25% {
-                text-shadow: -2px 0 red, 2px 0 blue;
-            }
-            50% {
-                text-shadow: 2px 0 red, -2px 0 blue;
-            }
-            75% {
-                text-shadow: -2px 0 red, 2px 0 blue;
-            }
-        }
-
-        h2 {
-            color: #f8e71c;
-            animation: glitch 1s infinite;
-        }
-
-        /* Button Effects */
-        button {
-            transform: rotate(-2deg);
-            background-color: darkred;
-            color: #fff;
-            padding: 10px 20px;
-            font-family: 'Press Start 2P', cursive;
-            border: 2px solid #000;
-            box-shadow: 0 0 10px #333;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
-        }
-
-        button:hover {
-            transform: rotate(5deg);
-            background-color: #ff0000;
-        }
-    </style>
+    <title>Boba Manor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <h1>Welcome to the Spooky Manor</h1>
-        <h2>The Haunted Hackathon</h2>
-        <p>Click a room to explore the websites!</p>
+    <header>
+        <h1>Boba Manor</h1>
+        <p>Enter the haunted manor... if you dare!</p>
+    </header>
+    
+    <main>
+        <!-- Spooky Manor Image with Clickable Rooms -->
+        <section class="manor-section">
+            <h2>Explore the Haunted Rooms</h2>
+            <img src="cartoon-manor.png" alt="Spooky Manor" usemap="#manormap">
+            <map name="manormap" id="manormap"></map>
+        </section>
 
-        <!-- Display the spooky manor image -->
-        <img src="https://i.redd.it/steamvr-home-spooky-manor-enjoy-the-trip-v0-otfgtbntk5pa1.jpg?width=1920&format=pjpg&auto=webp&s=1e90289be6c44d843c28bd6eeb40107c614f1bb6" alt="Spooky Manor" usemap="#manormap">
+        <!-- Website Submission Form -->
+        <section class="submission-section">
+            <h2>Submit Your Haunted Room</h2>
+            <form id="submission-form">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
 
-        <!-- Define the clickable areas (rooms) on the image -->
-        <map name="manormap">
-            <area shape="rect" coords="50,50,150,150" alt="Room 1" href="https://participant1-website.com" target="_blank">
-            <area shape="rect" coords="160,50,260,150" alt="Room 2" href="https://participant2-website.com" target="_blank">
-        </map>
+                <label for="website">Website URL:</label>
+                <input type="url" id="website" name="website" required>
 
-        <!-- Creepy Button -->
-        <button>Submit Your Website</button>
-    </div>
+                <button type="submit">Submit Your Haunted Room</button>
+            </form>
+        </section>
+    </main>
 
-    <!-- Optional: Background music -->
-    <audio id="creepy-sound" src="creepy-background-music.mp3" loop autoplay></audio>
+    <footer>
+        <p>&copy; Boba Manor. Beware, you have been warned...</p>
+    </footer>
 
-    <!-- Optional: Add creaky sound on hover -->
+    <!-- Spooky Sound Effect -->
     <audio id="creak-sound" src="door-creak.mp3"></audio>
-    <script>
-        document.querySelectorAll("area").forEach(room => {
-            room.addEventListener("mouseenter", () => {
-                document.getElementById("creak-sound").play();
-            });
-        });
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
