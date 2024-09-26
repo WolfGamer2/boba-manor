@@ -1,11 +1,11 @@
 const rooms = [
     { coords: "50,50,150,150", website: "https://default-room1.com" },
     { coords: "160,50,260,150", website: "https://default-room2.com" },
-    // Add more rooms here
+    
 ];
 
 function updateManor() {
-    // Removed manor map functionality
+    
 }
 
 document.getElementById("submission-form").addEventListener("submit", function(event) {
