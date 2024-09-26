@@ -13,11 +13,12 @@
             font-family: 'Creepster', cursive;
             margin: 0;
             padding: 0;
+            /* Background covers the entire page even when scrolling */
+            background-image: url('your-spooky-background.jpg');
             background-size: cover;
+            background-attachment: fixed;
             background-repeat: no-repeat;
             background-position: center;
-            /* Placeholder for spooky background */
-            background-image: url('https://media.istockphoto.com/id/1345876096/vector/halloween-night-background-scary-cemetery-and-full-moon-vector-banner.jpg?s=612x612&w=0&k=20&c=F9dCbuHEzjn1u6_ZBGlFmGqR6c-62NluzQttFASClmc=');
         }
 
         /* Header Styles */
@@ -46,9 +47,10 @@
         }
 
         h2 {
-            color: #fff;
-            animation: glitch 1s infinite;
+            color: #f8e71c; /* Easier to read color */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for legibility */
             font-size: 2rem;
+            /* Removed distracting animation */
         }
 
         /* Button Styles */
@@ -99,7 +101,7 @@
             bottom: 10%;
             width: 80px;
             height: 80px;
-            background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
+            background: url('your-ghost-image.png') no-repeat center;
             background-size: cover;
             opacity: 0.5;
             cursor: pointer;
@@ -110,28 +112,13 @@
             transform: scale(1.2);
         }
 
-        /* Flicker and Glitch Animations */
+        /* Flicker Animation for H1 */
         @keyframes flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
                 opacity: 1;
             }
             20%, 24%, 55% {
                 opacity: 0;
-            }
-        }
-
-        @keyframes glitch {
-            0% {
-                text-shadow: 2px 0 white, -2px 0 black;
-            }
-            25% {
-                text-shadow: -2px 0 white, 2px 0 black;
-            }
-            50% {
-                text-shadow: 2px 0 white, -2px 0 black;
-            }
-            75% {
-                text-shadow: -2px 0 white, 2px 0 black;
             }
         }
 
