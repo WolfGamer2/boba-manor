@@ -6,14 +6,14 @@
     <title>The Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
+        /* all styles */
         body {
             background-color: #000;
             color: #fff;
             font-family: 'Creepster', cursive;
             margin: 0;
             padding: 0;
-            /* Background covers the entire page even when scrolling */
+            
             background-image: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid');
             background-size: cover;
             background-attachment: fixed;
@@ -25,7 +25,7 @@
         header {
             text-align: center;
             padding: 20px;
-            /* Transparent background to show spooky background */
+        
             background-color: rgba(0, 0, 0, 0.3);
         }
 
@@ -47,8 +47,8 @@
         }
 
         h2 {
-            color: #f8e71c; /* Easier to read color */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Soft shadow for legibility */
+            color: #f8e71c; 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
             font-size: 2rem;
         }
 
@@ -70,7 +70,7 @@
             transform: scale(1.1);
         }
 
-        /* Floating Boba Bubbles */
+        /* Floating Boba Bubbles - trying to get it to workk, just a idea from a friend */
         .bubble {
             width: 50px;
             height: 50px;
@@ -93,11 +93,9 @@
             }
         }
 
-        /* Hidden Ghost */
+        
         .hidden-ghost {
             position: absolute;
-            right: 5%;
-            bottom: 10%;
             width: 80px;
             height: 80px;
             background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
@@ -112,7 +110,7 @@
             transform: scale(1.2);
         }
 
-        /* Rules Box */
+        /* rules */
         .rules-box {
             max-width: 600px;
             margin: 20px auto;
@@ -164,8 +162,9 @@
 
     <!-- Spooky sounds.... -->
     <audio id="creak-sound" src="door-creak.mp3"></audio>
+
+    <!-- JavaScript -->
     <script>
-        // clickable ghost - ghost moves to random location on click
         const ghost = document.querySelector('.hidden-ghost');
 
         function moveGhost() {
@@ -176,10 +175,14 @@
         }
 
         ghost.addEventListener('click', () => {
-            moveGhost();
+            ghost.style.opacity = 0; 
+            setTimeout(() => {
+                moveGhost(); 
+                ghost.style.opacity = 0.8; 
+            }, 500); 
         });
 
-        // floating boba bubbles for everyone :)
+        // Floating boba bubbles
         for (let i = 0; i < 10; i++) {
             let bubble = document.createElement('div');
             bubble.classList.add('bubble');
@@ -189,7 +192,7 @@
         }
     </script>
 
-    <!-- Hidden Clickable Ghost -->
+    <!-- Hidden Ghost -->
     <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
 </body>
 </html>
