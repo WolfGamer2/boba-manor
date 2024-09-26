@@ -152,17 +152,17 @@ area:hover {
 /* Sticker Styles */
 .stickers {
     position: absolute;
-    top: 20px; /* Adjust this value to move stickers up or down */
+    top: 20px; /* stickers up or down */
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between; /* Spread stickers across the width */
-    z-index: 10; /* Ensure stickers are above other content */
+    justify-content: space-between; /* width */
+    z-index: 10; /* above the content */
 }
 
 .sticker {
-    width: 60px; /* Set width for stickers; adjust as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 60px; /* widht */
+    height: auto; /* aspect ratio */
 }
 
 .left {
