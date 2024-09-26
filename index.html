@@ -8,9 +8,7 @@
 
     <!-- Vercel Analytics Script -->
     <script async src="https://cdn.jsdelivr.net/npm/@vercel/analytics"></script>
-</head>
 
-    
     <style>
         /* All Styles */
         body {
@@ -55,7 +53,7 @@
             padding: 20px;
         }
 
-        /* Section style */
+        
         .submission-section {
             padding: 20px;
             text-align: center;
@@ -84,7 +82,7 @@
             transform: scale(1.1);
         }
 
-        /* Clickable Areas for Spooky Quotes */
+        
         .clickable-area {
             position: absolute;
             width: 100px; 
@@ -128,28 +126,45 @@
             color: #fff;
         }
 
-        /* Sticker Styles */
+      
         .stickers {
             position: absolute;
-            top: 10px; /* stickers up or down */
+            top: 10px; 
             left: 0;
             right: 0;
             display: flex;
-            justify-content: space-between; /* Spread stickers across the width */
-            z-index: 10; /* Ensure stickers are above other content */
+            justify-content: space-between; 
+            z-index: 10; 
         }
 
         .sticker {
-            width: 40px; /* Set a smaller width for stickers */
-            height: auto; /* Maintain aspect ratio */
+            width: 40px; 
+            height: auto; 
         }
 
         .left {
-            margin-left: 20px; /* Spacing from the left edge */
+            margin-left: 20px; 
         }
 
         .right {
-            margin-right: 20px; /* Spacing from the right edge */
+            margin-right: 20px; 
+        }
+
+        /* Bubble Animation */
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://example.com/path/to/boba-bubble-image.png') no-repeat center center; /* Change to your bubble image */
+            background-size: contain;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
@@ -229,7 +244,7 @@
 
         function moveGhost() {
             const randomX = Math.random() * (window.innerWidth - 80); // width
-            const randomY = Math.random() * (window.innerHeight - 80); //  height
+            const randomY = Math.random() * (window.innerHeight - 80); // height
             ghost.style.left = `${randomX}px`;
             ghost.style.top = `${randomY}px`;
         }
@@ -237,34 +252,13 @@
         ghost.onclick = function() {
             ghost.style.opacity = 0; 
             setTimeout(() => {
-                moveGhost(); 
+                moveGhost();
                 ghost.style.opacity = 0.8; 
-            }, 2000); 
+            }, 1000);
+            document.getElementById('creak-sound').play(); // Play sound on click
         };
 
-        // Add floating boba bubbles
-        for (let i = 0; i < 10; i++) {
-            let bubble = document.createElement('div');
-            bubble.classList.add('bubble');
-            bubble.style.left = `${Math.random() * 100}%`;
-            bubble.style.animationDelay = `${Math.random() * 5}s`;
-            document.body.appendChild(bubble);
-        }
-
-        // sound effects
-        document.querySelectorAll(".clickable-area").forEach(room => {
-            room.addEventListener("click", () => {
-                document.getElementById("creak-sound").play();
-            });
-        });
+        moveGhost(); 
     </script>
-    
-    <script>
-    // Initialize Vercel Analytics
-    if (typeof Analytics !== 'undefined') {
-        Analytics();
-    }
-</script>
-
 </body>
 </html>
