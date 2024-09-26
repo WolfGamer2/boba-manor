@@ -191,14 +191,14 @@
             ghost.style.top = `${randomY}px`;
         }
 
-        // Use addEventListener to register click event
-        ghost.addEventListener('click', () => {
+        // Ghost click event to move it
+        ghost.onclick = function() {
             ghost.style.opacity = 0; // Make ghost disappear
             setTimeout(() => {
                 moveGhost(); // Move ghost after disappearing
                 ghost.style.opacity = 0.8; // Make it reappear
             }, 500); // Delay before reappearing
-        });
+        };
 
         // Floating boba bubbles for everyone :)
         for (let i = 0; i < 10; i++) {
