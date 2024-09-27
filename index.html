@@ -311,20 +311,13 @@
     // Set the target date to October 1, 2024 at 10 AM PDT
     const targetDate = new Date('2024-10-01T10:00:00-07:00').getTime();
     startCountdown(targetDate);
+<script>
+function moveGhost() {
+  const ghost = document.getElementById('ghost');
+  const x = Math.random() * (window.innerWidth - 100); // 100 is the width of the ghost
+  const y = Math.random() * (window.innerHeight - 100); // 100 is the height of the ghost
+  ghost.style.left = `${x}px`;
+  ghost.style.top = `${y}px`;
+}
+moveGhost();
 </script>
-
-
-        // Function to move the ghost
-        function moveGhost() {
-            const ghost = document.getElementById('ghost');
-            const x = Math.random() * (window.innerWidth - 100); // 100 is the width of the ghost
-            const y = Math.random() * (window.innerHeight - 100); // 100 is the height of the ghost
-            ghost.style.left = `${x}px`;
-            ghost.style.top = `${y}px`;
-        }
-
-        // Initial position
-        moveGhost();
-    </script>
-</body>
-</html>
