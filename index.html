@@ -53,7 +53,6 @@
             padding: 20px;
         }
 
-        
         .submission-section {
             padding: 20px;
             text-align: center;
@@ -82,7 +81,6 @@
             transform: scale(1.1);
         }
 
-        
         .clickable-area {
             position: absolute;
             width: 100px; 
@@ -126,7 +124,6 @@
             color: #fff;
         }
 
-      
         .stickers {
             position: absolute;
             top: 10px; 
@@ -167,7 +164,30 @@
             100% { transform: translateY(0); }
         }
 
-        /* Prizes and Steps Section */
+        /* Overlay Styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* On top of everything */
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Countdown Timer */
+        #countdown {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        /* Info Boxes */
         .info-box {
             max-width: 600px;
             margin: 20px auto;
@@ -234,11 +254,11 @@
         </section>
 
         <!-- Spooky Quotes -->
-        <div class="clickable-area" style="top: 10%; left: 20%;"></div>
-        <div class="clickable-area" style="top: 30%; left: 40%;"></div>
-        <div class="clickable-area" style="top: 50%; left: 60%;"></div>
-        <div class="clickable-area" style="top: 70%; left: 80%;"></div>
-        <div class="clickable-area" style="top: 20%; left: 70%;"></div>
+        <div class="clickable-area" style="top: 10%; left: 20%;" onclick="showQuote('Quote 1: The scariest thing is what’s hidden inside...')"></div>
+        <div class="clickable-area" style="top: 30%; left: 40%;" onclick="showQuote('Quote 2: Life is full of surprises, especially in the dark!')"></div>
+        <div class="clickable-area" style="top: 50%; left: 60%;" onclick="showQuote('Quote 3: Fear is only as deep as the mind allows.')"></div>
+        <div class="clickable-area" style="top: 70%; left: 80%;" onclick="showQuote('Quote 4: Shadows can be your best friends... if they don’t haunt you!')"></div>
+        <div class="clickable-area" style="top: 20%; left: 70%;" onclick="showQuote('Quote 5: The night is dark and full of terrors.')"></div>
 
         <!-- Hidden Clickable Ghost -->
         <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
@@ -247,6 +267,12 @@
     <footer>
         <p>&copy; The Boba Manor. Beware, you have been warned...</p>
     </footer>
+
+    <!-- Countdown Overlay -->
+    <div id="overlay" class="overlay">
+        <div>Coming Soon!</div>
+        <div id="countdown"></div>
+    </div>
 
     <!-- Script to handle ghost clicking -->
     <script>
@@ -257,6 +283,38 @@
             ghost.style.left = `${newX}px`;
             ghost.style.top = `${newY}px`;
         });
+
+        // Countdown Timer
+        const countdownDate = new Date("October 31, 2024 23:59:59").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                countdownElement.innerHTML = "EXPIRED";
+                document.getElementById("overlay").style.display = "none"; // Hide overlay when countdown ends
+            }
+        }, 1000);
+
+        // Show quote when clicked
+        function showQuote(quote) {
+            alert(quote);
+        }
+
+        // Check for admin bypass
+        if (window.location.search.includes('admin')) {
+            document.getElementById("overlay").style.display = "none";
+        }
     </script>
 </body>
 </html>
