@@ -24,184 +24,23 @@
             text-align: center;
         }
 
-        /* Header style */
-        header {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0);
-            position: relative; 
-        }
-
-        h1 {
-            color: #d1a300; 
-            font-size: 4rem;
-            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
-            animation: flicker 0.5s infinite alternate; 
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            25% { opacity: 0.2; } 
-            50% { opacity: 0.7; } 
-            75% { opacity: 0.4; } 
-            100% { opacity: 1; }
-        }
-
-        p {
-            font-size: 1.2rem;
-            color: #ddd;
-        }
-       
-        main {
-            flex: 1; 
-            padding: 20px;
-        }
-
-        .submission-section {
-            padding: 20px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #f8e71c; 
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
-            font-size: 2rem;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            font-family: 'Creepster', cursive;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 0 10px #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #555;
-            transform: scale(1.1);
-        }
-
-        .clickable-area {
-            position: absolute;
-            width: 100px; 
-            height: 100px; 
-            cursor: pointer;
-        }
-
-        /* Hidden Ghost */
-        .hidden-ghost {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
-            background-size: cover;
-            opacity: 0.8;
-            cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .hidden-ghost:hover {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        /* Rules Box */
-        .rules-box {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border: 2px solid #fff;
-            box-shadow: 0 0 15px #fff;
-            text-align: left;
-        }
-
-        footer {
-            padding: 20px;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #fff;
-        }
-
-        .stickers {
-            position: absolute;
-            top: 10px; 
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between; 
-            z-index: 10; 
-        }
-
-        .sticker {
-            width: 40px;
-            height: auto; 
-        }
-
-        .left {
-            margin-left: 20px; 
-        }
-
-        .right {
-            margin-right: 20px; 
-        }
-
-        /* Bubble Animation */
-        .bubble {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: url('https://static.wikia.nocookie.net/tastyplanet/images/f/f5/Tapioca_Pearl.png/revision/latest?cb=20220105010303') no-repeat center center; /* Change to your bubble image */
-            background-size: contain;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
         /* Overlay Styles */
-       .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; 
-    font-size: 7rem; 
-    color: white; 
-    font-family: 'Creepster', cursive; 
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); 
-}
-
-        /* Countdown Timer */
-        #countdown {
-            font-size: 3rem;
-            margin-top: 20px;
-        }
-
-        /* Info Boxes */
-        .info-box {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border: 2px solid #fff;
-            box-shadow: 0 0 15px #fff;
-            text-align: left;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* On top of everything */
+            font-size: 7rem; /* Large font size */
+            color: white; /* Text color white */
+            font-family: 'Creepster', cursive;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Shadow for spooky effect */
         }
     </style>
 </head>
@@ -209,108 +48,64 @@
     <header>
         <h1>The Boba Manor</h1>
         <p>Submit a spooky website for the Boba Manor!</p>
-        <!-- Stickers -->
-        <div class="stickers">
-            <img src="https://hackclub.com/stickers/orpheus-having-boba.png" class="sticker left" alt="Orpheus Having Boba">
-            <img src="https://hackclub.com/stickers/skullpup_boba.png" class="sticker right" alt="Skullpup Boba">
-        </div>
     </header>
 
     <main>
-        <!-- Submission Button Linked to Airtable -->
-        <section class="submission-section">
-            <h2>Submit Your Haunted Room</h2>
-            <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit here</button>
-        </section>
-
-        <!-- Open the Manor Button -->
-        <section class="submission-section">
-            <h2>Enter the Manor</h2>
-            <button onclick="window.location.href='manor.html'">Open the Manor</button>
-        </section>
-
-        <!-- Rules Box -->
-        <section class="rules-box">
-            <h2>Rules of the Haunted Manor</h2>
-            <ol>
-                <li>All submissions must be spooky-themed!</li>
-                <li>No inappropriate content—keep it eerie but respectful.</li>
-                <li>Must be a high schooler or younger!</li>
-                <li>The deadline for submissions is midnight on October 31st!</li>
-                <li>Don’t feed the Boba ghosts!</li>
-            </ol>
-        </section>
-
-        <!-- Prizes Box -->
-        <section class="info-box">
-            <h2>Prizes</h2>
-            <ul>
-                <li>Top 1: $150 Nothing Tech Earbud (a)</li>
-                <li>Top 50: Cards Against Humanity Card Pack</li>
-                <li>Top 10: Exclusive Boba Merch</li>
-                <li>Everyone: Spooky Sticker Pack!</li>
-            </ul>
-        </section>
-
-        <!-- Steps Box -->
-        <section class="info-box">
-            <h2>Steps to Participate</h2>
-            <ol>
-                <li>Brainstorm your spooky theme.</li>
-                <li>Build your haunted room.</li>
-                <li>Test and refine your design.</li>
-                <li>Submit your website before the deadline.</li>
-            </ol>
-        </section>
-
-        <div class="bubble" style="top: 50%; left: 50%; animation-delay: 0s;"></div>
-        <div class="bubble" style="top: 60%; left: 20%; animation-delay: 1s;"></div>
-        <div class="bubble" style="top: 70%; left: 70%; animation-delay: 2s;"></div>
+        <h2>Welcome to the Haunted Manor!</h2>
     </main>
 
+    <!-- Overlay for Countdown -->
+    <div class="overlay" id="overlay">
+        <p>Coming Soon</p>
+        <div id="countdown"></div>
+    </div>
+
+    <!-- Hidden Clickable Ghost -->
+    <div class="hidden-ghost" id="ghost" style="left: 50%; top: 50%; position: absolute; width: 80px; height: 80px; background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center; background-size: cover; cursor: pointer;"></div>
+
     <footer>
-        <p>&copy; 2024 The Boba Manor</p>
+        <p>&copy; The Boba Manor. Beware, you have been warned... Made By @R </p>
     </footer>
 
-    <!-- Hidden Ghost -->
-    <div class="hidden-ghost" id="ghost" onclick="moveGhost()"></div>
+    <script>
+        // Countdown Timer for Oct 1st, 10 AM PDT
+        const countdownDate = new Date("October 1, 2024 10:00:00 GMT-0700").getTime();
+        const countdownElement = document.getElementById("countdown");
 
-   <!-- Overlay for Countdown -->
-<div class="overlay" id="overlay" style="display: none;">
-    <p>Coming Soon</p>
-    <div id="countdown"></div>
-</div>
-
-<script>
-    // Countdown Timer Function
-    function startCountdown(targetDate) {
-        const countdownElement = document.getElementById('countdown');
-        const overlayElement = document.getElementById('overlay');
-        overlayElement.style.display = 'flex';
-
-        const interval = setInterval(function () {
+        const countdownFunction = setInterval(() => {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const distance = countdownDate - now;
 
-            // Time calculations
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-            // If the countdown is finished, hide the overlay
+            // Hide overlay when countdown ends
             if (distance < 0) {
-                clearInterval(interval);
-                countdownElement.textContent = "The Manor is open!";
-                // Optionally redirect or load the manor here
-                // window.location.href = 'manor.html'; // Uncomment if you want to redirect
+                clearInterval(countdownFunction);
+                countdownElement.innerHTML = "EXPIRED";
+                document.getElementById("overlay").style.display = "none";
             }
         }, 1000);
-    }
 
-    // Set the target date to October 1, 2024 at 10 AM PDT
-    const targetDate = new Date('2024-10-01T10:00:00-07:00').getTime();
-    startCountdown(targetDate);
-    
+        // Function to move the ghost
+        function moveGhost() {
+            const ghost = document.getElementById('ghost');
+            const x = Math.random() * (window.innerWidth - 100); // 100 is the width of the ghost
+            const y = Math.random() * (window.innerHeight - 100); // 100 is the height of the ghost
+            ghost.style.left = `${x}px`;
+            ghost.style.top = `${y}px`;
+        }
+
+        // Move ghost initially and on click
+        const ghost = document.getElementById('ghost');
+        ghost.addEventListener('click', moveGhost);
+
+        // Initial ghost position
+        moveGhost();
+    </script>
+</body>
+</html>
