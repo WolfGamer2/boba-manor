@@ -273,34 +273,46 @@
     <!-- Hidden Ghost -->
     <div class="hidden-ghost" id="ghost" onclick="moveGhost()"></div>
 
-    <!-- Overlay for Countdown -->
-    <div class="overlay" id="overlay" style="display: none;">
-        <p>Loading the Haunted Rooms...</p>
-        <div id="countdown"></div>
-    </div>
+   <!-- Overlay for Countdown -->
+<div class="overlay" id="overlay" style="display: none;">
+    <p>Coming Soon</p>
+    <div id="countdown"></div>
+</div>
 
-    <script>
-        // Countdown Timer Function
-        function startCountdown(duration) {
-            let timer = duration, seconds;
-            const countdownElement = document.getElementById('countdown');
-            const overlayElement = document.getElementById('overlay');
-            overlayElement.style.display = 'flex';
+<script>
+    // Countdown Timer Function
+    function startCountdown(targetDate) {
+        const countdownElement = document.getElementById('countdown');
+        const overlayElement = document.getElementById('overlay');
+        overlayElement.style.display = 'flex';
 
-            const interval = setInterval(function () {
-                seconds = parseInt(timer % 60, 10);
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                countdownElement.textContent = seconds;
+        const interval = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-                if (--timer < 0) {
-                    clearInterval(interval);
-                    overlayElement.style.display = 'none';
-                }
-            }, 1000);
-        }
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Call countdown for 5 seconds
-        startCountdown(5);
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // If the countdown is finished, hide the overlay
+            if (distance < 0) {
+                clearInterval(interval);
+                countdownElement.textContent = "The Manor is open!";
+                // Optionally redirect or load the manor here
+                // window.location.href = 'manor.html'; // Uncomment if you want to redirect
+            }
+        }, 1000);
+    }
+
+    // Set the target date to October 1, 2024 at 10 AM PDT
+    const targetDate = new Date('2024-10-01T10:00:00-07:00').getTime();
+    startCountdown(targetDate);
+</script>
+
 
         // Function to move the ghost
         function moveGhost() {
