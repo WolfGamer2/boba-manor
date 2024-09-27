@@ -166,6 +166,18 @@
             50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
         }
+
+        /* Prizes and Steps Section */
+        .info-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px #fff;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -198,6 +210,28 @@
             </ol>
         </section>
 
+        <!-- Prizes Box -->
+        <section class="info-box">
+            <h2>Prizes</h2>
+            <ul>
+                <li>Top Room: $150 worth Nothing Tech Earbuds!</li>
+                <li>Top 50: Cards Against Humanity Pack</li>
+                <li>Everyone!: Exclusive Spooky Boba Stickers</li>
+            </ul>
+        </section>
+
+        <!-- Steps Box -->
+        <section class="info-box">
+            <h2>Steps to Participate</h2>
+            <ol>
+                <li>Step 1: Brainstorm your spooky room.</li>
+                <li>Step 2: Build your haunted room.</li>
+                <li>Step 3: Push to Github Pages.</li>
+                <li>Step 4: Submit your room here..</li>
+                <li>Step 5: Watch the haunting unfold!</li>
+            </ol>
+        </section>
+
         <!-- Spooky Quotes -->
         <div class="clickable-area" style="top: 10%; left: 20%;"></div>
         <div class="clickable-area" style="top: 30%; left: 40%;"></div>
@@ -213,52 +247,15 @@
         <p>&copy; The Boba Manor. Beware, you have been warned...</p>
     </footer>
 
-    <!-- Spooky sounds.... -->
-    <audio id="creak-sound" src="door-creak.mp3"></audio>
-
-    <!-- JavaScript -->
+    <!-- Script to handle ghost clicking -->
     <script>
-        // Spooky Quotes
-        const spookyQuotes = [
-            "Double, double, toil and trouble!",
-            "Boo! Did I scare you?",
-            "In the night of Halloween, ghosts will rise!",
-            "Creepy things go bump in the night!",
-            "The shadows hide more than just darkness...",
-            "Beware of the witching hour!",
-            "Something wicked this way comes!",
-            "The ghost of boba past is watching you!",
-        ];
-
-        const clickableAreas = document.querySelectorAll('.clickable-area');
-
-        clickableAreas.forEach(area => {
-            area.addEventListener('click', () => {
-                const randomQuote = spookyQuotes[Math.floor(Math.random() * spookyQuotes.length)];
-                alert(randomQuote);
-            });
-        });
-
-        // Register the ghost 
         const ghost = document.querySelector('.hidden-ghost');
-
-        function moveGhost() {
-            const randomX = Math.random() * (window.innerWidth - 80); // width
-            const randomY = Math.random() * (window.innerHeight - 80); // height
-            ghost.style.left = `${randomX}px`;
-            ghost.style.top = `${randomY}px`;
-        }
-
-        ghost.onclick = function() {
-            ghost.style.opacity = 0; 
-            setTimeout(() => {
-                moveGhost();
-                ghost.style.opacity = 0.8; 
-            }, 1000);
-            document.getElementById('creak-sound').play(); // Play sound on click
-        };
-
-        moveGhost(); 
+        ghost.addEventListener('click', () => {
+            const newX = Math.random() * (window.innerWidth - 100);
+            const newY = Math.random() * (window.innerHeight - 100);
+            ghost.style.left = `${newX}px`;
+            ghost.style.top = `${newY}px`;
+        });
     </script>
 </body>
 </html>
