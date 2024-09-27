@@ -24,35 +24,29 @@
             text-align: center;
         }
 
-        /* Overlay for Coming Soon */
+        /* Overlay Styles */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #FFA500; /* Solid light orange */
+            background-color: rgba(255, 165, 0, 0.8); /* Light orange overlay */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            color: #fff;
-            text-align: center;
+            justify-content: center;
+            z-index: 1000; /* On top of everything */
+            font-size: 2rem;
+            color: white;
         }
 
-        .overlay h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            color: #fff;
+        /* Hide overlay by default */
+        .hidden {
+            display: none;
         }
 
-        .overlay .countdown {
-            font-size: 2.5rem;
-            color: #fff; /* White font for the countdown */
-        }
-
-        /* Header style */
+        /* Other styles as before... */
         header {
             padding: 20px;
             background-color: rgba(0, 0, 0, 0);
@@ -75,7 +69,7 @@
             font-size: 1.2rem;
             color: #ddd;
         }
-       
+
         main {
             flex: 1; 
             padding: 20px;
@@ -109,6 +103,7 @@
             transform: scale(1.1);
         }
 
+        /* Rules Box */
         .rules-box {
             max-width: 600px;
             margin: 20px auto;
@@ -127,28 +122,16 @@
             color: #fff;
         }
 
-        /* Stickers */
-        .stickers {
-            position: absolute;
-            top: 10px; 
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between; 
-            z-index: 10; 
-        }
-
-        .sticker {
-            width: 100px; /* Adjust sticker size */
-            height: auto; 
-        }
-
-        .left {
-            margin-left: 20px; 
-        }
-
-        .right {
-            margin-right: 20px; 
+        /* Prizes and Steps Section */
+        .info-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px #fff;
+            text-align: left;
         }
     </style>
 </head>
@@ -156,12 +139,13 @@
     <header>
         <h1>The Boba Manor</h1>
         <p>Submit a spooky website for the Boba Manor!</p>
-        <!-- Stickers -->
-        <div class="stickers">
-            <img src="https://hackclub.com/stickers/orpheus-having-boba.png" class="sticker left" alt="Orpheus Having Boba">
-            <img src="https://hackclub.com/stickers/skullpup_boba.png" class="sticker right" alt="Skullpup Boba">
-        </div>
     </header>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay">
+        <div>Coming Soon</div>
+        <div id="countdown"></div>
+    </div>
 
     <main>
         <!-- Submission Button Linked to Airtable -->
@@ -181,51 +165,65 @@
                 <li>Don’t feed the Boba ghosts!</li>
             </ol>
         </section>
+
+        <!-- Prizes Box -->
+        <section class="info-box">
+            <h2>Prizes</h2>
+            <ul>
+                <li>Top Room: $150 worth Nothing Tech Earbuds!</li>
+                <li>Top 50: Cards Against Humanity Pack</li>
+                <li>Everyone!: Exclusive Spooky Boba Stickers</li>
+            </ul>
+        </section>
+
+        <!-- Steps Box -->
+        <section class="info-box">
+            <h2>Steps to Participate</h2>
+            <ol>
+                <li> Brainstorm your spooky room.</li>
+                <li> Build your haunted room.</li>
+                <li> Push to Github Pages.</li>
+                <li> Submit your room here..</li>
+                <li> Watch the haunting unfold!</li>
+            </ol>
+        </section>
     </main>
 
     <footer>
         <p>&copy; The Boba Manor. Beware, you have been warned...</p>
     </footer>
 
-    <!-- Countdown Overlay -->
-    <div class="overlay" id="overlay">
-        <h1>Coming Soon</h1>
-        <div class="countdown" id="countdown"></div>
-    </div>
-
-    <!-- Countdown Script -->
     <script>
-        const countdownElement = document.getElementById('countdown');
-        const overlayElement = document.getElementById('overlay');
-        const targetDate = new Date('October 1, 2024 10:00:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-            if (timeLeft < 0) {
-                clearInterval(countdownInterval);
-                countdownElement.innerHTML = "Event has started!";
-            }
-        }
-
-        // Check if URL contains admin=true
+        // Check if admin is in the URL
         const urlParams = new URLSearchParams(window.location.search);
         const isAdmin = urlParams.get('admin') === 'true';
 
-        // Hide the overlay if admin is true
         if (isAdmin) {
-            overlayElement.style.display = 'none';
+            // If admin, hide the overlay
+            document.getElementById("overlay").classList.add("hidden");
         }
 
-        const countdownInterval = setInterval(updateCountdown, 1000);
+        // Countdown function
+        const countdownDate = new Date("October 1, 2024 10:00:00").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // If countdown is over
+            if (distance < 0) {
+                clearInterval();
+                countdownElement.innerHTML = "EXPIRED";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
