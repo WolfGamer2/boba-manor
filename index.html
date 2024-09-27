@@ -1,111 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Boba Manor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+<!-- Overlay for Countdown -->
+<div class="overlay" id="overlay" style="display: none;">
+    <p>Coming Soon</p>
+    <div id="countdown"></div>
+</div>
 
-    <!-- Vercel Analytics Script -->
-    <script async src="https://cdn.jsdelivr.net/npm/@vercel/analytics"></script>
+<script>
+    // Countdown Timer Function
+    function startCountdown(targetDate) {
+        const countdownElement = document.getElementById('countdown');
+        const overlayElement = document.getElementById('overlay');
+        overlayElement.style.display = 'flex';
 
-    <style>
-        /* All Styles */
-        body {
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            margin: 0;
-            padding: 0;
-            font-family: 'Creepster', cursive;
-            background: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            text-align: center;
-        }
-
-        /* Overlay Styles */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000; /* On top of everything */
-            font-size: 7rem; /* Large font size */
-            color: white; /* Text color white */
-            font-family: 'Creepster', cursive;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Shadow for spooky effect */
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>The Boba Manor</h1>
-        <p>Submit a spooky website for the Boba Manor!</p>
-    </header>
-
-    <main>
-        <h2>Welcome to the Haunted Manor!</h2>
-    </main>
-
-    <!-- Overlay for Countdown -->
-    <div class="overlay" id="overlay">
-        <p>Coming Soon</p>
-        <div id="countdown"></div>
-    </div>
-
-    <!-- Hidden Clickable Ghost -->
-    <div class="hidden-ghost" id="ghost" style="left: 50%; top: 50%; position: absolute; width: 80px; height: 80px; background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center; background-size: cover; cursor: pointer;"></div>
-
-    <footer>
-        <p>&copy; The Boba Manor. Beware, you have been warned... Made By @R </p>
-    </footer>
-
-    <script>
-        // Countdown Timer for Oct 1st, 10 AM PDT
-        const countdownDate = new Date("October 1, 2024 10:00:00 GMT-0700").getTime();
-        const countdownElement = document.getElementById("countdown");
-
-        const countdownFunction = setInterval(() => {
+        const interval = setInterval(function () {
             const now = new Date().getTime();
-            const distance = countdownDate - now;
+            const distance = targetDate - now;
 
+            // Time calculations
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-            // Hide overlay when countdown ends
+            // If the countdown is finished, hide the overlay
             if (distance < 0) {
-                clearInterval(countdownFunction);
-                countdownElement.innerHTML = "EXPIRED";
-                document.getElementById("overlay").style.display = "none";
+                clearInterval(interval);
+                countdownElement.textContent = "The Manor is open!";
+                // Optionally redirect or load the manor here
+                // window.location.href = 'manor.html'; // Uncomment if you want to redirect
             }
         }, 1000);
+    }
 
-        // Function to move the ghost
-        function moveGhost() {
-            const ghost = document.getElementById('ghost');
-            const x = Math.random() * (window.innerWidth - 100); // 100 is the width of the ghost
-            const y = Math.random() * (window.innerHeight - 100); // 100 is the height of the ghost
-            ghost.style.left = `${x}px`;
-            ghost.style.top = `${y}px`;
-        }
-
-        // Move ghost initially and on click
-        const ghost = document.getElementById('ghost');
-        ghost.addEventListener('click', moveGhost);
-
-        // Initial ghost position
-        moveGhost();
-    </script>
-</body>
-</html>
+    // Set the target date to October 1, 2024 at 10 AM PDT
+    const targetDate = new Date('2024-10-01T10:00:00-07:00').getTime();
+    startCountdown(targetDate);
+</script>
