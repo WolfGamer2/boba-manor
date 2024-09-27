@@ -1,4 +1,8 @@
+/* All Styles */
 body {
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
     margin: 0;
     padding: 0;
     font-family: 'Creepster', cursive;
@@ -6,31 +10,25 @@ body {
     background-size: cover;
     color: #fff;
     text-align: center;
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh; 
 }
 
+/* Header style */
 header {
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: relative; /* Set position relative to position stickers */
+    background-color: rgba(0, 0, 0, 0);
+    position: relative; 
 }
 
 h1 {
     color: #f8e71c; 
     font-size: 4rem;
-    text-shadow: 2px 2px 5px #000;
-    animation: flicker 2s infinite; 
+    text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; 
+    animation: flicker 1.5s infinite alternate; 
 }
 
 @keyframes flicker {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        opacity: 1;
-    }
-    20%, 24%, 55% {
-        opacity: 0;
-    }
+    0% { opacity: 1; }
+    100% { opacity: 0.8; }
 }
 
 p {
@@ -41,19 +39,15 @@ p {
 main {
     flex: 1; 
     padding: 20px;
-    margin-top: 50px;
 }
 
+/* Submission Section */
 .submission-section {
-    background-color: rgba(50, 0, 0, 0.8);
-    padding: 30px;
-    border: 2px solid darkred;
-    display: inline-block;
-    transform: rotate(-2deg);
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.8);
-    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
+/* H2 Styles */
 h2 {
     color: #f8e71c; 
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
@@ -61,51 +55,28 @@ h2 {
 }
 
 button {
-    padding: 15px 30px;
-    background-color: darkred;
-    color: white;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
     font-family: 'Creepster', cursive;
     border: none;
     border-radius: 5px;
+    box-shadow: 0 0 10px #fff;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    transform: rotate(5deg);
-    background-color: #fff;
-    color: darkred;
+    background-color: #555;
+    transform: scale(1.1);
 }
 
-footer {
-    margin-top: 50px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 0.9rem;
-    text-shadow: 1px 1px 3px #000;
-}
-
-/* Floating Boba Bubbles */
-.bubble {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
+/* Clickable Areas */
+.clickable-area {
     position: absolute;
-    animation: float 10s infinite;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-300px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    width: 100px; 
+    height: 100px; 
+    cursor: pointer;
 }
 
 /* Hidden Ghost */
@@ -125,19 +96,6 @@ footer {
     transform: scale(1.2);
 }
 
-/* Animation for shaking effect */
-area:hover {
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    25% { transform: translate(-1px, -2px) rotate(-1deg); }
-    50% { transform: translate(-3px, 0px) rotate(1deg); }
-    75% { transform: translate(3px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -1px) rotate(1deg); }
-}
-
 /* Rules Box */
 .rules-box {
     max-width: 600px;
@@ -150,26 +108,80 @@ area:hover {
     text-align: left;
 }
 
-/* Sticker Styles */
+/* Info Boxes */
+.info-box {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px #fff;
+    text-align: left;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+}
+
+/* Stickers */
 .stickers {
     position: absolute;
-    top: 10px; /* Adjust this value to move stickers up or down */
+    top: 10px; 
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between; /* Spread stickers across the width */
-    z-index: 10; /* Ensure stickers are above other content */
+    justify-content: space-between; 
+    z-index: 10; 
 }
 
 .sticker {
-    width: 40px; /* Set a smaller width for stickers */
-    height: auto; /* Maintain aspect ratio */
+    width: 40px; 
+    height: auto; 
 }
 
 .left {
-    margin-left: 20px; /* Spacing from the left edge */
+    margin-left: 20px; 
 }
 
 .right {
-    margin-right: 20px; /* Spacing from the right edge */
+    margin-right: 20px; 
+}
+
+/* Bubble Animation */
+.bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('https://static.wikia.nocookie.net/tastyplanet/images/f/f5/Tapioca_Pearl.png/revision/latest?cb=20220105010303') no-repeat center center; /* Change to your bubble image */
+    background-size: contain;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Overlay Styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* On top of everything */
+    font-size: 2rem;
+    color: white;
 }
