@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Spooky Manor</title>
+    <style>
+      /* Full page iframe */
+      iframe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+    <script>
+      // Approved haunted house pages
+      const rooms = [
+        "http://localhost:3000/rooms/example_1.html",
+        "http://localhost:3000/rooms/example_2.html",
+        "http://localhost:3000/rooms/library.html",
+        "http://localhost:3000/rooms/kitchen.html",
+        "http://localhost:3000/rooms/observatory.html",
+        "http://localhost:3000/rooms/greenhouse.html",
+      ];
+
+      // Function to select a random room
+      function getRandomRoom() {
+        return rooms[Math.floor(Math.random() * rooms.length)];
+      }
+    </script>
+  </head>
+  <body>
+    <iframe src="#"></iframe>
+
+    <script>
+      const room = getRandomRoom();
+
+      // Check if we are the parent page
+      if (window.self === window.top) {
+        // If we're the parent page, load the random room into the iframe
+        document.querySelector("iframe").src = room;
+      } else {
+        // If we're the child iframe, redirect to a random room
+        window.location.href = room;
+      }
+    </script>
+  </body>
+</html>
