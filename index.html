@@ -24,6 +24,34 @@
             text-align: center;
         }
 
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 165, 0, 0.9); /* Light orange */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: #fff;
+            text-align: center;
+        }
+
+        .overlay h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .overlay .countdown {
+            font-size: 2.5rem;
+            color: #fff; 
+        }
+
         /* Header style */
         header {
             padding: 20px;
@@ -53,62 +81,8 @@
             padding: 20px;
         }
 
-        
-        .submission-section {
-            padding: 20px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #f8e71c; 
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
-            font-size: 2rem;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            font-family: 'Creepster', cursive;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 0 10px #fff;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #555;
-            transform: scale(1.1);
-        }
-
-        
-        .clickable-area {
-            position: absolute;
-            width: 100px; 
-            height: 100px; 
-            cursor: pointer;
-        }
-
-        /* Hidden Ghost */
-        .hidden-ghost {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
-            background-size: cover;
-            opacity: 0.8;
-            cursor: pointer;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .hidden-ghost:hover {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        /* Rules Box */
-        .rules-box {
+        /* Prizes and Steps Section */
+        .info-box {
             max-width: 600px;
             margin: 20px auto;
             padding: 20px;
@@ -125,62 +99,16 @@
             background-color: rgba(0, 0, 0, 0.9);
             color: #fff;
         }
-
-      
-        .stickers {
-            position: absolute;
-            top: 10px; 
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between; 
-            z-index: 10; 
-        }
-
-        .sticker {
-            width: 40px; 
-            height: auto; 
-        }
-
-        .left {
-            margin-left: 20px; 
-        }
-
-        .right {
-            margin-right: 20px; 
-        }
-
-        /* Bubble Animation */
-        .bubble {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: url('https://static.wikia.nocookie.net/tastyplanet/images/f/f5/Tapioca_Pearl.png/revision/latest?cb=20220105010303') no-repeat center center; /* Change to your bubble image */
-            background-size: contain;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Prizes and Steps Section */
-        .info-box {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border: 2px solid #fff;
-            box-shadow: 0 0 15px #fff;
-            text-align: left;
-        }
     </style>
 </head>
 <body>
+
+    <!--  Orange Overlay  -->
+    <div class="overlay" id="comingSoonOverlay">
+        <h1>Coming Soon</h1>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
     <header>
         <h1>The Boba Manor</h1>
         <p>Submit a spooky website for the Boba Manor!</p>
@@ -224,38 +152,47 @@
         <section class="info-box">
             <h2>Steps to Participate</h2>
             <ol>
-                <li> Brainstorm your spooky room.</li>
-                <li> Build your haunted room.</li>
-                <li> Push to Github Pages.</li>
-                <li> Submit your room here..</li>
-                <li> Watch the haunting unfold!</li>
+                <li>Brainstorm your spooky room.</li>
+                <li>Build your haunted room.</li>
+                <li>Push to Github Pages.</li>
+                <li>Submit your room here..</li>
+                <li>Watch the haunting unfold!</li>
             </ol>
         </section>
 
-        <!-- Spooky Quotes -->
-        <div class="clickable-area" style="top: 10%; left: 20%;"></div>
-        <div class="clickable-area" style="top: 30%; left: 40%;"></div>
-        <div class="clickable-area" style="top: 50%; left: 60%;"></div>
-        <div class="clickable-area" style="top: 70%; left: 80%;"></div>
-        <div class="clickable-area" style="top: 20%; left: 70%;"></div>
-
-        <!-- Hidden Clickable Ghost -->
-        <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
     </main>
 
     <footer>
         <p>&copy; The Boba Manor. Beware, you have been warned...</p>
     </footer>
 
-    <!-- Script to handle ghost clicking -->
+    <!-- Countdown -->
     <script>
-        const ghost = document.querySelector('.hidden-ghost');
-        ghost.addEventListener('click', () => {
-            const newX = Math.random() * (window.innerWidth - 100);
-            const newY = Math.random() * (window.innerHeight - 100);
-            ghost.style.left = `${newX}px`;
-            ghost.style.top = `${newY}px`;
-        });
+        const countdownElement = document.getElementById("countdown");
+
+        // date setter (October 1st, 2024, 10 AM PDT)
+        const countdownDate = new Date("Oct 1, 2024 10:00:00 PDT").getTime();
+
+        // Update the countdown every 1 second
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Time calculations 
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the countdown element
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // overlay hider
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("comingSoonOverlay").style.display = "none";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
