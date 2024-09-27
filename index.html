@@ -188,7 +188,7 @@
     </footer>
 
     <!-- Countdown Overlay -->
-    <div class="overlay">
+    <div class="overlay" id="overlay">
         <h1>Coming Soon</h1>
         <div class="countdown" id="countdown"></div>
     </div>
@@ -196,6 +196,7 @@
     <!-- Countdown Script -->
     <script>
         const countdownElement = document.getElementById('countdown');
+        const overlayElement = document.getElementById('overlay');
         const targetDate = new Date('October 1, 2024 10:00:00').getTime();
 
         function updateCountdown() {
@@ -213,6 +214,15 @@
                 clearInterval(countdownInterval);
                 countdownElement.innerHTML = "Event has started!";
             }
+        }
+
+        // Check if URL contains admin=true
+        const urlParams = new URLSearchParams(window.location.search);
+        const isAdmin = urlParams.get('admin') === 'true';
+
+        // Hide the overlay if admin is true
+        if (isAdmin) {
+            overlayElement.style.display = 'none';
         }
 
         const countdownInterval = setInterval(updateCountdown, 1000);
