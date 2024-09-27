@@ -32,19 +32,19 @@
         }
 
         h1 {
-            color: #d1a300; 
-            font-size: 4rem;
-            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
-            animation: flicker 0.5s infinite alternate; 
-        }
+        color: #d1a300; 
+        font-size: 4rem;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
+        animation: flicker 0.5s infinite alternate; 
+    }
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            25% { opacity: 0.2; } 
-            50% { opacity: 0.7; } 
-            75% { opacity: 0.4; } 
-            100% { opacity: 1; }
-        }
+    @keyframes flicker {
+        0% { opacity: 1; }
+        25% { opacity: 0.2; } 
+        50% { opacity: 0.7; } 
+        75% { opacity: 0.4; } 
+        100% { opacity: 1; }
+    }
 
         p {
             font-size: 1.2rem;
@@ -138,7 +138,7 @@
         }
 
         .sticker {
-            width: 40px;
+            width: 40px; 
             height: auto; 
         }
 
@@ -221,12 +221,6 @@
             <button onclick="window.open('https://airtable.com/form_link', '_blank')">Submit here</button>
         </section>
 
-        <!-- Open the Manor Button -->
-        <section class="submission-section">
-            <h2>Enter the Manor</h2>
-            <button onclick="window.location.href='manor.html'">Open the Manor</button>
-        </section>
-
         <!-- Rules Box -->
         <section class="rules-box">
             <h2>Rules of the Haunted Manor</h2>
@@ -254,77 +248,76 @@
         <section class="info-box">
             <h2>Steps to Participate</h2>
             <ol>
-                <li>Brainstorm your spooky theme.</li>
-                <li>Build your haunted room.</li>
-                <li>Test and refine your design.</li>
-                <li>Submit your website before the deadline.</li>
+                <li> Brainstorm your spooky theme.</li>
+                <li> Build your haunted room</li>
+                <li> Test and refine your design.</li>
+                <li> Submit your website before the deadline.</li>
+                <li> Watch the haunting unfold!</li>
             </ol>
         </section>
 
-        <div class="bubble" style="top: 50%; left: 50%; animation-delay: 0s;"></div>
-        <div class="bubble" style="top: 60%; left: 20%; animation-delay: 1s;"></div>
-        <div class="bubble" style="top: 70%; left: 70%; animation-delay: 2s;"></div>
+        <!-- Spooky Quotes -->
+        <div class="clickable-area" style="top: 10%; left: 20%;" onclick="showQuote('Quote 1: The scariest thing is what’s hidden inside...')"></div>
+        <div class="clickable-area" style="top: 30%; left: 40%;" onclick="showQuote('Quote 2: Life is full of surprises, especially in the dark!')"></div>
+        <div class="clickable-area" style="top: 50%; left: 60%;" onclick="showQuote('Quote 3: Fear is only as deep as the mind allows.')"></div>
+        <div class="clickable-area" style="top: 70%; left: 80%;" onclick="showQuote('Quote 4: Shadows can be your best friends... if they don’t haunt you!')"></div>
+        <div class="clickable-area" style="top: 20%; left: 70%;" onclick="showQuote('Quote 5: The night is dark and full of terrors.')"></div>
+
+        <!-- Hidden Clickable Ghost -->
+        <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
     </main>
 
     <footer>
-        <p>&copy; 2024 The Boba Manor</p>
+        <p>&copy; The Boba Manor. Beware, you have been warned...     Made By @R </p>
     </footer>
 
-    <!-- Hidden Ghost -->
-    <div class="hidden-ghost" id="ghost" onclick="moveGhost()"></div>
+    <!-- Countdown Overlay -->
+    <div id="overlay" class="overlay">
+        <div>Coming Soon!</div>
+        <div id="countdown"></div>
+    </div>
 
-   <!-- Overlay for Countdown -->
-<div class="overlay" id="overlay" style="display: none;">
-    <p>Coming Soon</p>
-    <div id="countdown"></div>
-</div>
+    <!-- Script to handle ghost clicking -->
+    <script>
+        const ghost = document.querySelector('.hidden-ghost');
+        ghost.addEventListener('click', () => {
+            const newX = Math.random() * (window.innerWidth - 100);
+            const newY = Math.random() * (window.innerHeight - 100);
+            ghost.style.left = `${newX}px`;
+            ghost.style.top = `${newY}px`;
+        });
 
-<script>
-    // Countdown Timer Function
-    function startCountdown(targetDate) {
-        const countdownElement = document.getElementById('countdown');
-        const overlayElement = document.getElementById('overlay');
-        overlayElement.style.display = 'flex';
+  // Countdown Timer
+const countdownDate = new Date("October 1, 2024 10:00:00 GMT-0700").getTime();
+const countdownElement = document.getElementById("countdown");
 
-        const interval = setInterval(function () {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+const countdownFunction = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
 
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-            // If the countdown is finished, hide the overlay
-            if (distance < 0) {
-                clearInterval(interval);
-                countdownElement.textContent = "The Manor is open!";
-                // Optionally redirect or load the manor here
-                // window.location.href = 'manor.html'; // Uncomment if you want to redirect
-            }
-        }, 1000);
+    if (distance < 0) {
+        clearInterval(countdownFunction);
+        countdownElement.innerHTML = "EXPIRED";
+        document.getElementById("overlay").style.display = "none"; // Hide overlay when countdown ends
     }
+}, 1000);
 
-    // Set the target date to October 1, 2024 at 10 AM PDT
-    const targetDate = new Date('2024-10-01T10:00:00-07:00').getTime();
-    startCountdown(targetDate);
-</script>
-
-
-        // Function to move the ghost
-        function moveGhost() {
-            const ghost = document.getElementById('ghost');
-            const x = Math.random() * (window.innerWidth - 100); // 100 is the width of the ghost
-            const y = Math.random() * (window.innerHeight - 100); // 100 is the height of the ghost
-            ghost.style.left = `${x}px`;
-            ghost.style.top = `${y}px`;
+        // Show quote when clicked
+        function showQuote(quote) {
+            alert(quote);
         }
 
-        // Initial position
-        moveGhost();
+        // Check for admin bypass
+        if (window.location.search.includes('admin')) {
+            document.getElementById("overlay").style.display = "none";
+        }
     </script>
 </body>
 </html>
