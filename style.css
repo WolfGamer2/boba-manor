@@ -20,16 +20,18 @@ header {
 }
 
 h1 {
-    color: #f8e71c; 
+    color: #d1a300; 
     font-size: 4rem;
-    text-shadow: 2px 2px 10px #fff, 0 0 5px #f8e71c; 
-    animation: flicker 1.5s infinite alternate; 
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3); 
+    animation: flicker 1s infinite alternate; 
 }
 
 @keyframes flicker {
     0% { opacity: 1; }
-    100% { opacity: 0.8; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
 }
+
 
 p {
     font-size: 1.2rem;
