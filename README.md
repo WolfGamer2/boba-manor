@@ -30,7 +30,7 @@ Let your imagination run wild, but remember... **the spookier, the better!** �
 ## 🏆 Prizes
 
 - **Best Overall** 🎨:$149 Nothing Earbuds (a).
-- **Top 50** 🧛: Packs of Card Against Humanity Science & Climate Packs.
+- **Top 20** 🧛: Packs of Card Against Humanity Science & Climate Packs.
 - **Top 15** 💀: Spooky Boba Swag.
 - **Everyone** 💀: Exclusive Boba Stickers.
 
