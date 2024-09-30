@@ -10,6 +10,7 @@ body {
     background-size: cover;
     color: #fff;
     text-align: center;
+    cursor: url('https://example.com/path/to/your-cursor.png'), auto; /* Add your custom cursor here */
 }
 
 /* Header Style */
