@@ -82,7 +82,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.7); /* Added semi-transparent background */
     color: #fff;
     border: 2px solid #fff;
-    border-radius: 10px;
+    border-radius: 20px; /* More rounded corners */
     box-shadow: 0 0 15px #fff;
     text-align: left;
     font-size: 1.2rem;
