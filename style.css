@@ -5,7 +5,7 @@ body {
     min-height: 100vh; 
     margin: 0;
     padding: 0;
-    font-family: 'Creepster', cursive;
+    font-family: 'Griffy', cursive;
     background: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
@@ -63,7 +63,7 @@ button {
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
-    font-family: 'Creepster', cursive;
+    font-family: 'Griffy', cursive;
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 10px #fff;
@@ -81,7 +81,7 @@ button:hover {
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
-    font-family: 'Creepster', cursive;
+    font-family: 'Griffy', cursive;
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 10px #fff;
