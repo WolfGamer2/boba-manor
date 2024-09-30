@@ -12,6 +12,13 @@ body {
     text-align: center;
 }
 
+.griffy-regular {
+  font-family: "Griffy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* Header style */
 header {
     padding: 20px;
@@ -187,6 +194,7 @@ footer {
     border-radius: 50%;
     animation: float 6s ease-in-out infinite;
 }
+
 
 @keyframes float {
     0% { transform: translateY(0); }
