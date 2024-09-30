@@ -304,6 +304,19 @@
             ghost.style.left = `${newX}px`;
             ghost.style.top = `${newY}px`;
         });
+        <script>
+    const fog = document.querySelector('.fog');
+
+    function moveFog() {
+        fog.style.backgroundPositionX = `${Math.sin(Date.now() / 1000) * 5}px`;
+        fog.style.backgroundPositionY = `${Math.cos(Date.now() / 1000) * 5}px`;
+        requestAnimationFrame(moveFog);
+    }
+
+    moveFog();
+</script>
+
+<div class="fog"></div>
 
   // Countdown Timer
 const countdownDate = new Date("October 1, 2024 10:00:00 GMT-0700").getTime();
