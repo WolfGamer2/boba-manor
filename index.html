@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Spooky Boba Manor</title>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css" /> -->
 
     <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -33,16 +34,16 @@
 
         /* Header style */
         header {
-            padding: 20px;
+            /* padding: 20px; */
             background-color: rgba(0, 0, 0, 0);
             position: relative; 
         }
 
         h1 {
-        color: #d1a300; 
+        color: #e3a920; 
         font-size: 4rem;
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
-        animation: flicker 0.5s infinite alternate; 
+        animation: flicker 2.5s infinite alternate; 
     }
 
     @keyframes flicker {
@@ -54,8 +55,12 @@
     }
 
         p {
-            font-size: 1.2rem;
+            font-size: 2.5rem;
             color: #ddd;
+        }
+        li {
+            font-size: 1.5rem;
+            line-height: 120%;
         }
        
         main {
@@ -69,12 +74,13 @@
         }
 
         h2 {
-            color: #f8e71c; 
+            color: #f88a1c; 
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
             font-size: 2rem;
         }
 
         button {
+            font-size: 3em;
             padding: 10px 20px;
             background-color: #333;
             color: #fff;
@@ -212,20 +218,27 @@
 </head>
 <body>
     <header>
-        <h1>The Boba Manor</h1>
-        <p>Submit a spooky website for the Boba Manor!</p>
+        <h1 onClick="doot()" style="cursor: pointer;">The Boba Manor</h1>
+        <!-- <p>Submit a spooky website for the Boba Manor!</p> -->
         <!-- Stickers -->
-        <div class="stickers">
+        <!-- <div class="stickers">
             <img src="https://hackclub.com/stickers/orpheus-having-boba.png" class="sticker left" alt="Orpheus Having Boba">
             <img src="https://hackclub.com/stickers/skullpup_boba.png" class="sticker right" alt="Skullpup Boba">
-        </div>
+        </div> -->
     </header>
 
     <main>
         <!-- Submission Button Linked to Airtable -->
         <section class="submission-section">
+update-styling-before-launch
+            <marquee><h2>Submit Your Haunted Room</h2></marquee>
+            <a href="https://hack.club/boba-manor-submit" target="_blank">
+                <button style="background-color: orange; color: rgba(36, 39, 59, 1) !important;">Submit here</button>
+            </a>
+
             <h2>Submit Your Haunted Room</h2>
             <button onclick="window.open('https://forms.hackclub.com/t/5tdmbCT2rGus', '_blank')">Submit here</button>
+main
         </section>
 
         <!-- <button id="manorButton" class="redirect-button">
@@ -243,8 +256,12 @@
         <section class="rules-box">
             <h2>Rules of the Haunted Manor</h2>
             <ol>
+update-styling-before-launch
+                <li>All submissions must be spooky-themed!</li>
+
                 <li>All submissions must be spooky-themed</li>
                 <li>No inappropriate content—keep it eerie but respectful</li>
+main
                 <li>Must be a high schooler or younger!</li>
                 <li>The deadline for submissions is midnight on October 31st</li>
                 <li>Don’t feed the Boba ghosts</li>
@@ -266,11 +283,19 @@
         <section class="info-box">
             <h2>Steps to Participate</h2>
             <ol>
+update-styling-before-launch
+                <li> Brainstorm your spooky theme in the #boba channel of <a href="https://hackclub.com/slack">slack</a>.</li>
+                <li> Build your haunted room (website).</li>
+                <li> Test and refine your design.</li>
+                <li> Submit your website before the deadline.</li>
+                <li> After enough rooms are submitted, we'll open the manor and you can voyage through it!</li>
+
                 <li> Brainstorm your spooky theme</li>
                 <li> Build your haunted room</li>
                 <li> Add the a redirect to this website (check the form)</li>
                 <li> Submit your website before the deadline</li>
                 <li> Watch the haunting unfold</li>
+main
             </ol>
         </section>
 
@@ -283,17 +308,45 @@
 
         <!-- Hidden Clickable Ghost -->
         <div class="hidden-ghost" style="left: 50%; top: 50%;"></div>
+        <!-- Submission Button Linked to Airtable -->
+        <section class="submission-section">
+            <h2>Submit Your Haunted Room</h2>
+            <a href="https://hack.club/boba-manor-submit" target="_blank">
+                <button style="background-color: orange; color: rgba(36, 39, 59, 1) !important;">Submit here</button>
+            </a>
+        </section>
     </main>
 
     <footer>
         <p>&copy; The Boba Manor. Beware, you have been warned...     Made By @R </p>
     </footer>
+    <script>
+        function doot() {
+            // the jumpscare of all time
+            const dootUrl = 'https://cloud-ctlarj8uq-hack-club-bot.vercel.app/0skullsound2_audio.mp4'
+            // play the doot sound
+            const audio = new Audio(dootUrl)
 
-    <!-- Countdown Overlay -->
-    <div id="overlay" class="overlay">
-        <div>Coming Soon!</div>
-        <div id="countdown"></div>
-    </div>
+            const gifUrl = 'https://cloud-11jkf35jk-hack-club-bot.vercel.app/0doot-doot-doot.gif'
+            const img = document.createElement('img')
+            img.src = gifUrl
+            img.style.position = 'fixed'
+            img.style.bottom = '0px'
+            img.style.left = '0px'
+            img.style.width = '100vw'
+            img.style.height = '100vh'
+            const body = document.querySelector('body')
+            body.appendChild(img)
+
+            audio.onended = () => {
+                // delete the image
+                setTimeout(() => {
+                    img.remove()
+                }, 100)
+            }
+            audio.play()
+        }
+    </script>
 
     <!-- Script to handle ghost clicking -->
     <script>
