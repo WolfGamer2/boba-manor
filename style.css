@@ -48,7 +48,7 @@ main {
 
 /* Submission Section */
 .submission-section {
-    padding: 20px;
+    /* padding: 20px; */
     text-align: center;
 }
 
@@ -60,6 +60,7 @@ h2 {
 }
 
 button {
+    font-size: 3em !important;
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
