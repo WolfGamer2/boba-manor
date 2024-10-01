@@ -1,51 +1,53 @@
-/* All Styles */
+/* Global Styles */
 body {
     display: flex; 
     flex-direction: column; 
     min-height: 100vh; 
     margin: 0;
     padding: 0;
-    font-family: 'Creepster', cursive;
-    background: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1727308800&semt=ais_hybrid') no-repeat center center fixed;
+    font-family: 'Arial', sans-serif; 
+    background: url('https://img.freepik.com/free-vector/watercolor-halloween-background_52683-43698.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     text-align: center;
+    cursor: url('https://cdn-icons-png.flaticon.com/512/2838/2838880.png'), auto; 
 }
 
-/* Header style */
+/* Header Style */
 header {
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0);
     position: relative; 
 }
 
 h1 {
     color: #d1a300; 
     font-size: 4rem;
+    font-family: 'Creepster', cursive;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
-    animation: flicker 0.5s infinite alternate; 
+    animation: flicker 1s infinite alternate;
+    margin-bottom: 10px;
 }
 
 @keyframes flicker {
     0% { opacity: 1; }
-    25% { opacity: 0.2; } 
-    50% { opacity: 0.7; } 
-    75% { opacity: 0.4; } 
+    50% { opacity: 0.4; } 
     100% { opacity: 1; }
 }
 
-
-
 p {
     font-size: 1.2rem;
-    color: #ddd;
+    color: #fff;
+    margin: 0 20px;
+    line-height: 1.6;
 }
 
+/* Main Content */
 main {
     flex: 1; 
     padding: 20px;
 }
 
+update-styling-before-launch
 /* Submission Section */
 .submission-section {
     /* padding: 20px; */
@@ -53,85 +55,73 @@ main {
 }
 
 /* H2 Styles */
+
+ main
 h2 {
     color: #f8e71c; 
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
-    font-size: 2rem;
+    font-size: 2.5rem; /* Increased font size */
+    font-family: 'Creepster', cursive; /* Keep spooky font for headings */
+    margin-bottom: 20px;
 }
 
+/* Buttons */
 button {
+update-styling-before-launch
     font-size: 3em !important;
     padding: 10px 20px;
+
+    padding: 15px 30px;
+main
     background-color: #333;
     color: #fff;
-    font-family: 'Creepster', cursive;
+    font-family: 'Arial', sans-serif; /* Use readable font for buttons */
+    font-size: 1.2rem;
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 10px #fff;
     cursor: pointer;
+    margin: 10px 0;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
     background-color: #555;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* Clickable Areas */
-.clickable-area {
-    position: absolute;
-    width: 100px; 
-    height: 100px; 
-    cursor: pointer;
-}
-
-/* Hidden Ghost */
-.hidden-ghost {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background: url('https://static.vecteezy.com/system/resources/previews/014/605/931/original/a-cartoon-white-evil-ghost-that-has-fun-haunting-people-on-halloween-png.png') no-repeat center;
-    background-size: cover;
-    opacity: 0.8;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.hidden-ghost:hover {
-    opacity: 1;
-    transform: scale(1.2);
-}
-
-/* Rules Box */
-.rules-box {
-    max-width: 600px;
+/* Boxes Styles */
+.rules-box, .info-box {
+    max-width: 700px;
     margin: 20px auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7); /* Added semi-transparent background */
     color: #fff;
     border: 2px solid #fff;
+    border-radius: 20px; /* More rounded corners */
     box-shadow: 0 0 15px #fff;
     text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
-/* Info Boxes */
-.info-box {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    border: 2px solid #fff;
-    box-shadow: 0 0 15px #fff;
-    text-align: left;
+.rules-box h2, .info-box h2 {
+    font-family: 'Creepster', cursive;
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.rules-box ol li, .info-box ul li, .info-box ol li {
+    margin-bottom: 10px;
 }
 
 /* Footer */
 footer {
     padding: 20px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.8);
     color: #fff;
+    font-size: 1rem;
 }
 
 /* Stickers */
@@ -146,7 +136,7 @@ footer {
 }
 
 .sticker {
-    width: 40px; 
+    width: 60px; 
     height: auto; 
 }
 
@@ -161,18 +151,17 @@ footer {
 /* Bubble Animation */
 .bubble {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: url('https://static.wikia.nocookie.net/tastyplanet/images/f/f5/Tapioca_Pearl.png/revision/latest?cb=20220105010303') no-repeat center center; /* Change to your bubble image */
+    width: 30px;
+    height: 30px;
+    background: url('https://static.wikia.nocookie.net/tastyplanet/images/f/f5/Tapioca_Pearl.png') no-repeat center center;
     background-size: contain;
-    border-radius: 50%;
     animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0); }
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-20px); opacity: 0.7; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 /* Overlay Styles */
@@ -182,12 +171,38 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 165, 0, 1); /* Fully opaque orange overlay */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark overlay */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* On top of everything */
-    font-size: 2rem;
-    color: white;
+    z-index: 1000;
+    font-size: 3rem;
+    color: #f8e71c;
+    font-family: 'Creepster', cursive;
+    text-align: center;
+}
+
+/* Countdown Timer */
+#countdown {
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
+
+/* Adjustments for Readability */
+ol, ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #f8e71c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
