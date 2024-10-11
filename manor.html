@@ -25,15 +25,29 @@
         "https://eshangonemad.github.io/Hallooweeeeen/",
         "https://pizzalover125.github.io/nightmare/",
         "https://sillywilly21.github.io/spookydookie/index.html",
-        "https://aaronsfunstuff.github.io/aarons-spooky-corner-/ ",
+        "https://aaronsfunstuff.github.io/aarons-spooky-corner-/",
         "https://actuallymed.github.io/bobamanor/",
         "https://neongamerbot-qk.github.io/spooky-boba/",
         "https://halloweenhaunter.arnav.hackclub.app/",
       ];
 
-      // Function to select a random room
-      function getRandomRoom() {
-        return rooms[Math.floor(Math.random() * rooms.length)];
+      let visitedRooms = [];
+
+      //Fisher-Yates shuffle)
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+      
+      function getNextRoom() {
+        // If all rooms have been visited, reshuffle and start over
+        if (visitedRooms.length === 0) {
+          visitedRooms = [...rooms];
+          shuffle(visitedRooms); 
+        }
+        return visitedRooms.shift();
       }
     </script>
   </head>
@@ -41,14 +55,11 @@
     <iframe src="#"></iframe>
 
     <script>
-      const room = getRandomRoom();
+      const room = getNextRoom();
 
-      // Check if we are the parent page
       if (window.self === window.top) {
-        // If we're the parent page, load the random room into the iframe
         document.querySelector("iframe").src = room;
       } else {
-        // If we're the child iframe, redirect to a random room
         window.location.href = room;
       }
     </script>
